@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:champion_selector/search.dart';
 import 'style.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(HomeScreen());
 }
 
-class MyApp extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,23 +30,25 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: bgColor, body: Center(child: app()));
+    return Scaffold(
+        backgroundColor: bgColor, body: Center(child: app(context)));
   }
 }
 
-Widget app() {
+Widget app(BuildContext context) {
   return Column(
     children: <Widget>[
       Expanded(
           child: renderColumn(
-        _buildContainer(role_icon(Colors.purpleAccent, "top"), 'Top'),
-        _buildContainer(role_icon(Colors.green, "jungle"), 'Jungle'),
+        _buildContainer(role_icon(Colors.purpleAccent, "top"), 'Top', context),
+        _buildContainer(role_icon(Colors.green, "jungle"), 'Jungle', context),
       )),
-      _buildContainer(role_icon(Colors.redAccent, "mid"), 'Mid'),
+      _buildContainer(role_icon(Colors.redAccent, "mid"), 'Mid', context),
       Expanded(
           child: renderColumn(
-        _buildContainer(role_icon(Colors.cyanAccent, "adc"), 'ADC'),
-        _buildContainer(role_icon(Colors.yellowAccent, "sup"), 'Support'),
+        _buildContainer(role_icon(Colors.cyanAccent, "adc"), 'ADC', context),
+        _buildContainer(
+            role_icon(Colors.yellowAccent, "sup"), 'Support', context),
       ))
     ],
   );
@@ -84,13 +86,13 @@ Widget role_icon(color, role) {
   );
 }
 
-Widget _buildContainer(icon, title) {
+Widget _buildContainer(icon, title, context) {
   return Column(
     mainAxisSize: MainAxisSize.min,
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      Align(alignment: Alignment.center, child: box(icon)),
+      Align(alignment: Alignment.center, child: box(icon, context)),
       Align(
         alignment: Alignment.center,
         child: Text(
@@ -103,7 +105,7 @@ Widget _buildContainer(icon, title) {
   );
 }
 
-Widget box(icon) {
+Widget box(icon, context) {
   return Container(
     height: 100.0,
     width: 100.0,
@@ -132,7 +134,13 @@ Widget box(icon) {
           splashFactory: InkRipple.splashFactory,
           splashColor: bgdarkColor,
           highlightColor: Colors.transparent,
-          onTap: () => print("Container pressed"), // handle your onTap here
+          onTap: () => {
+                print("Container pressed"),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SecondRoute(i: 5)),
+                ),
+              }, // handle your onTap here
           child: icon),
     ),
   );
