@@ -31,7 +31,7 @@ dependencies:
   font_awesome_flutter: ^8.8.1
   vertical_navigation_bar: ^0.0.2
   device_preview: ^0.4.8
-
+  autocomplete_textfield: ^1.6.4
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -41,6 +41,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
+    - assets/
     - assets/icons/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

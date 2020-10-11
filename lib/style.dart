@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const Color bglightColor = Color(0xFF202438);
 const Color bgColor = Color(0xFF1E202C);
 const Color bgdarkColor = Color(0xFF0E0E12);
 const Color lightColor = Color(0xFFAFB6C5);

@@ -1,0 +1,604 @@
+{
+    "champions": [
+        {
+            "keyword": "Aatrox",
+            "autocompleteTerm": "Aatrox"
+        },
+        {
+            "keyword": "Ahri",
+            "autocompleteTerm": "Ahri"
+        },
+        {
+            "keyword": "Akali",
+            "autocompleteTerm": "Akali"
+        },
+        {
+            "keyword": "Alistar",
+            "autocompleteTerm": "Alistar"
+        },
+        {
+            "keyword": "Amumu",
+            "autocompleteTerm": "Amumu"
+        },
+        {
+            "keyword": "Anivia",
+            "autocompleteTerm": "Anivia"
+        },
+        {
+            "keyword": "Annie",
+            "autocompleteTerm": "Annie"
+        },
+        {
+            "keyword": "Aphelios",
+            "autocompleteTerm": "Aphelios"
+        },
+        {
+            "keyword": "Ashe",
+            "autocompleteTerm": "Ashe"
+        },
+        {
+            "keyword": "Aurelion Sol",
+            "autocompleteTerm": "Aurelion Sol"
+        },
+        {
+            "keyword": "Azir",
+            "autocompleteTerm": "Azir"
+        },
+        {
+            "keyword": "Bard",
+            "autocompleteTerm": "Bard"
+        },
+        {
+            "keyword": "Blitzcrank",
+            "autocompleteTerm": "Blitzcrank"
+        },
+        {
+            "keyword": "Brand",
+            "autocompleteTerm": "Brand"
+        },
+        {
+            "keyword": "Braum",
+            "autocompleteTerm": "Braum"
+        },
+        {
+            "keyword": "Caitlyn",
+            "autocompleteTerm": "Caitlyn"
+        },
+        {
+            "keyword": "Camille",
+            "autocompleteTerm": "Camille"
+        },
+        {
+            "keyword": "Cassiopeia",
+            "autocompleteTerm": "Cassiopeia"
+        },
+        {
+            "keyword": "Cho'Gath",
+            "autocompleteTerm": "Cho'Gath"
+        },
+        {
+            "keyword": "Corki",
+            "autocompleteTerm": "Corki"
+        },
+        {
+            "keyword": "Darius",
+            "autocompleteTerm": "Darius"
+        },
+        {
+            "keyword": "Diana",
+            "autocompleteTerm": "Diana"
+        },
+        {
+            "keyword": "Dr. Mundo",
+            "autocompleteTerm": "Dr. Mundo"
+        },
+        {
+            "keyword": "Draven",
+            "autocompleteTerm": "Draven"
+        },
+        {
+            "keyword": "Ekko",
+            "autocompleteTerm": "Ekko"
+        },
+        {
+            "keyword": "Elise",
+            "autocompleteTerm": "Elise"
+        },
+        {
+            "keyword": "Evelynn",
+            "autocompleteTerm": "Evelynn"
+        },
+        {
+            "keyword": "Ezreal",
+            "autocompleteTerm": "Ezreal"
+        },
+        {
+            "keyword": "Fiddlesticks",
+            "autocompleteTerm": "Fiddlesticks"
+        },
+        {
+            "keyword": "Fiora",
+            "autocompleteTerm": "Fiora"
+        },
+        {
+            "keyword": "Fizz",
+            "autocompleteTerm": "Fizz"
+        },
+        {
+            "keyword": "Galio",
+            "autocompleteTerm": "Galio"
+        },
+        {
+            "keyword": "Gangplank",
+            "autocompleteTerm": "Gangplank"
+        },
+        {
+            "keyword": "Garen",
+            "autocompleteTerm": "Garen"
+        },
+        {
+            "keyword": "Gnar",
+            "autocompleteTerm": "Gnar"
+        },
+        {
+            "keyword": "Gragas",
+            "autocompleteTerm": "Gragas"
+        },
+        {
+            "keyword": "Graves",
+            "autocompleteTerm": "Graves"
+        },
+        {
+            "keyword": "Hecarim",
+            "autocompleteTerm": "Hecarim"
+        },
+        {
+            "keyword": "Heimerdinger",
+            "autocompleteTerm": "Heimerdinger"
+        },
+        {
+            "keyword": "Illaoi",
+            "autocompleteTerm": "Illaoi"
+        },
+        {
+            "keyword": "Irelia",
+            "autocompleteTerm": "Irelia"
+        },
+        {
+            "keyword": "Ivern",
+            "autocompleteTerm": "Ivern"
+        },
+        {
+            "keyword": "Janna",
+            "autocompleteTerm": "Janna"
+        },
+        {
+            "keyword": "Jarvan IV",
+            "autocompleteTerm": "Jarvan IV"
+        },
+        {
+            "keyword": "Jax",
+            "autocompleteTerm": "Jax"
+        },
+        {
+            "keyword": "Jayce",
+            "autocompleteTerm": "Jayce"
+        },
+        {
+            "keyword": "Jhin",
+            "autocompleteTerm": "Jhin"
+        },
+        {
+            "keyword": "Jinx",
+            "autocompleteTerm": "Jinx"
+        },
+        {
+            "keyword": "Kai'Sa",
+            "autocompleteTerm": "Kai'Sa"
+        },
+        {
+            "keyword": "Kalista",
+            "autocompleteTerm": "Kalista"
+        },
+        {
+            "keyword": "Karma",
+            "autocompleteTerm": "Karma"
+        },
+        {
+            "keyword": "Karthus",
+            "autocompleteTerm": "Karthus"
+        },
+        {
+            "keyword": "Kassadin",
+            "autocompleteTerm": "Kassadin"
+        },
+        {
+            "keyword": "Katarina",
+            "autocompleteTerm": "Katarina"
+        },
+        {
+            "keyword": "Kayle",
+            "autocompleteTerm": "Kayle"
+        },
+        {
+            "keyword": "Kayn",
+            "autocompleteTerm": "Kayn"
+        },
+        {
+            "keyword": "Kennen",
+            "autocompleteTerm": "Kennen"
+        },
+        {
+            "keyword": "Kha'Zix",
+            "autocompleteTerm": "Kha'Zix"
+        },
+        {
+            "keyword": "Kindred",
+            "autocompleteTerm": "Kindred"
+        },
+        {
+            "keyword": "Kled",
+            "autocompleteTerm": "Kled"
+        },
+        {
+            "keyword": "Kog'Maw",
+            "autocompleteTerm": "Kog'Maw"
+        },
+        {
+            "keyword": "LeBlanc",
+            "autocompleteTerm": "LeBlanc"
+        },
+        {
+            "keyword": "Lee Sin",
+            "autocompleteTerm": "Lee Sin"
+        },
+        {
+            "keyword": "Leona",
+            "autocompleteTerm": "Leona"
+        },
+        {
+            "keyword": "Lillia",
+            "autocompleteTerm": "Lillia"
+        },
+        {
+            "keyword": "Lissandra",
+            "autocompleteTerm": "Lissandra"
+        },
+        {
+            "keyword": "Lucian",
+            "autocompleteTerm": "Lucian"
+        },
+        {
+            "keyword": "Lulu",
+            "autocompleteTerm": "Lulu"
+        },
+        {
+            "keyword": "Lux",
+            "autocompleteTerm": "Lux"
+        },
+        {
+            "keyword": "Malphite",
+            "autocompleteTerm": "Malphite"
+        },
+        {
+            "keyword": "Malzahar",
+            "autocompleteTerm": "Malzahar"
+        },
+        {
+            "keyword": "Maokai",
+            "autocompleteTerm": "Maokai"
+        },
+        {
+            "keyword": "Master Yi",
+            "autocompleteTerm": "Master Yi"
+        },
+        {
+            "keyword": "Miss Fortune",
+            "autocompleteTerm": "Miss Fortune"
+        },
+        {
+            "keyword": "Mordekaiser",
+            "autocompleteTerm": "Mordekaiser"
+        },
+        {
+            "keyword": "Morgana",
+            "autocompleteTerm": "Morgana"
+        },
+        {
+            "keyword": "Nami",
+            "autocompleteTerm": "Nami"
+        },
+        {
+            "keyword": "Nasus",
+            "autocompleteTerm": "Nasus"
+        },
+        {
+            "keyword": "Nautilus",
+            "autocompleteTerm": "Nautilus"
+        },
+        {
+            "keyword": "Neeko",
+            "autocompleteTerm": "Neeko"
+        },
+        {
+            "keyword": "Nidalee",
+            "autocompleteTerm": "Nidalee"
+        },
+        {
+            "keyword": "Nocturne",
+            "autocompleteTerm": "Nocturne"
+        },
+        {
+            "keyword": "Nunu & Willump",
+            "autocompleteTerm": "Nunu & Willump"
+        },
+        {
+            "keyword": "Olaf",
+            "autocompleteTerm": "Olaf"
+        },
+        {
+            "keyword": "Orianna",
+            "autocompleteTerm": "Orianna"
+        },
+        {
+            "keyword": "Ornn",
+            "autocompleteTerm": "Ornn"
+        },
+        {
+            "keyword": "Pantheon",
+            "autocompleteTerm": "Pantheon"
+        },
+        {
+            "keyword": "Poppy",
+            "autocompleteTerm": "Poppy"
+        },
+        {
+            "keyword": "Pyke",
+            "autocompleteTerm": "Pyke"
+        },
+        {
+            "keyword": "Qiyana",
+            "autocompleteTerm": "Qiyana"
+        },
+        {
+            "keyword": "Quinn",
+            "autocompleteTerm": "Quinn"
+        },
+        {
+            "keyword": "Rakan",
+            "autocompleteTerm": "Rakan"
+        },
+        {
+            "keyword": "Rammus",
+            "autocompleteTerm": "Rammus"
+        },
+        {
+            "keyword": "Rek'Sai",
+            "autocompleteTerm": "Rek'Sai"
+        },
+        {
+            "keyword": "Renekton",
+            "autocompleteTerm": "Renekton"
+        },
+        {
+            "keyword": "Rengar",
+            "autocompleteTerm": "Rengar"
+        },
+        {
+            "keyword": "Riven",
+            "autocompleteTerm": "Riven"
+        },
+        {
+            "keyword": "Rumble",
+            "autocompleteTerm": "Rumble"
+        },
+        {
+            "keyword": "Ryze",
+            "autocompleteTerm": "Ryze"
+        },
+        {
+            "keyword": "Sejuani",
+            "autocompleteTerm": "Sejuani"
+        },
+        {
+            "keyword": "Senna",
+            "autocompleteTerm": "Senna"
+        },
+        {
+            "keyword": "Sett",
+            "autocompleteTerm": "Sett"
+        },
+        {
+            "keyword": "Shaco",
+            "autocompleteTerm": "Shaco"
+        },
+        {
+            "keyword": "Shen",
+            "autocompleteTerm": "Shen"
+        },
+        {
+            "keyword": "Shyvana",
+            "autocompleteTerm": "Shyvana"
+        },
+        {
+            "keyword": "Singed",
+            "autocompleteTerm": "Singed"
+        },
+        {
+            "keyword": "Sion",
+            "autocompleteTerm": "Sion"
+        },
+        {
+            "keyword": "Sivir",
+            "autocompleteTerm": "Sivir"
+        },
+        {
+            "keyword": "Skarner",
+            "autocompleteTerm": "Skarner"
+        },
+        {
+            "keyword": "Sona",
+            "autocompleteTerm": "Sona"
+        },
+        {
+            "keyword": "Soraka",
+            "autocompleteTerm": "Soraka"
+        },
+        {
+            "keyword": "Swain",
+            "autocompleteTerm": "Swain"
+        },
+        {
+            "keyword": "Sylas",
+            "autocompleteTerm": "Sylas"
+        },
+        {
+            "keyword": "Syndra",
+            "autocompleteTerm": "Syndra"
+        },
+        {
+            "keyword": "Tahm Kench",
+            "autocompleteTerm": "Tahm Kench"
+        },
+        {
+            "keyword": "Taliyah",
+            "autocompleteTerm": "Taliyah"
+        },
+        {
+            "keyword": "Talon",
+            "autocompleteTerm": "Talon"
+        },
+        {
+            "keyword": "Taric",
+            "autocompleteTerm": "Taric"
+        },
+        {
+            "keyword": "Teemo",
+            "autocompleteTerm": "Teemo"
+        },
+        {
+            "keyword": "Thresh",
+            "autocompleteTerm": "Thresh"
+        },
+        {
+            "keyword": "Tristana",
+            "autocompleteTerm": "Tristana"
+        },
+        {
+            "keyword": "Trundle",
+            "autocompleteTerm": "Trundle"
+        },
+        {
+            "keyword": "Tryndamere",
+            "autocompleteTerm": "Tryndamere"
+        },
+        {
+            "keyword": "Twisted Fate",
+            "autocompleteTerm": "Twisted Fate"
+        },
+        {
+            "keyword": "Twitch",
+            "autocompleteTerm": "Twitch"
+        },
+        {
+            "keyword": "Udyr",
+            "autocompleteTerm": "Udyr"
+        },
+        {
+            "keyword": "Urgot",
+            "autocompleteTerm": "Urgot"
+        },
+        {
+            "keyword": "Varus",
+            "autocompleteTerm": "Varus"
+        },
+        {
+            "keyword": "Vayne",
+            "autocompleteTerm": "Vayne"
+        },
+        {
+            "keyword": "Veigar",
+            "autocompleteTerm": "Veigar"
+        },
+        {
+            "keyword": "Vel'Koz",
+            "autocompleteTerm": "Vel'Koz"
+        },
+        {
+            "keyword": "Vi",
+            "autocompleteTerm": "Vi"
+        },
+        {
+            "keyword": "Viktor",
+            "autocompleteTerm": "Viktor"
+        },
+        {
+            "keyword": "Vladimir",
+            "autocompleteTerm": "Vladimir"
+        },
+        {
+            "keyword": "Volibear",
+            "autocompleteTerm": "Volibear"
+        },
+        {
+            "keyword": "Warwick",
+            "autocompleteTerm": "Warwick"
+        },
+        {
+            "keyword": "Wukong",
+            "autocompleteTerm": "Wukong"
+        },
+        {
+            "keyword": "Xayah",
+            "autocompleteTerm": "Xayah"
+        },
+        {
+            "keyword": "Xerath",
+            "autocompleteTerm": "Xerath"
+        },
+        {
+            "keyword": "Xin Zhao",
+            "autocompleteTerm": "Xin Zhao"
+        },
+        {
+            "keyword": "Yasuo",
+            "autocompleteTerm": "Yasuo"
+        },
+        {
+            "keyword": "Yone",
+            "autocompleteTerm": "Yone"
+        },
+        {
+            "keyword": "Yorick",
+            "autocompleteTerm": "Yorick"
+        },
+        {
+            "keyword": "Yuumi",
+            "autocompleteTerm": "Yuumi"
+        },
+        {
+            "keyword": "Zac",
+            "autocompleteTerm": "Zac"
+        },
+        {
+            "keyword": "Zed",
+            "autocompleteTerm": "Zed"
+        },
+        {
+            "keyword": "Ziggs",
+            "autocompleteTerm": "Ziggs"
+        },
+        {
+            "keyword": "Zilean",
+            "autocompleteTerm": "Zilean"
+        },
+        {
+            "keyword": "Zoe",
+            "autocompleteTerm": "Zoe"
+        },
+        {
+            "keyword": "Zyra",
+            "autocompleteTerm": "Zyra"
+        }
+    ]
+}
