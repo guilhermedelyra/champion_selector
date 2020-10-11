@@ -40,15 +40,15 @@ Widget app(BuildContext context) {
     children: <Widget>[
       Expanded(
           child: renderColumn(
-        _buildContainer(role_icon(Colors.purpleAccent, "top"), 'Top', context),
-        _buildContainer(role_icon(Colors.green, "jungle"), 'Jungle', context),
+        _buildContainer(roleIcon(Colors.purpleAccent, "top"), 'Top', context),
+        _buildContainer(roleIcon(Colors.green, "jungle"), 'Jungle', context),
       )),
-      _buildContainer(role_icon(Colors.redAccent, "mid"), 'Mid', context),
+      _buildContainer(roleIcon(Colors.redAccent, "mid"), 'Mid', context),
       Expanded(
           child: renderColumn(
-        _buildContainer(role_icon(Colors.cyanAccent, "adc"), 'ADC', context),
+        _buildContainer(roleIcon(Colors.cyanAccent, "adc"), 'ADC', context),
         _buildContainer(
-            role_icon(Colors.yellowAccent, "sup"), 'Support', context),
+            roleIcon(Colors.yellowAccent, "sup"), 'Support', context),
       ))
     ],
   );
@@ -75,7 +75,7 @@ Widget renderColumn(widg1, widg2) {
   );
 }
 
-Widget role_icon(color, role) {
+Widget roleIcon(color, role) {
   return SizedBox(
     height: 32,
     width: 32,
