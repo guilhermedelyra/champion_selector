@@ -138,7 +138,7 @@ Widget box(icon, context) {
                 print("Container pressed"),
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AutoComplete()),
+                  MaterialPageRoute(builder: (context) => AutoComplete(i: 5)),
                 ),
               }, // handle your onTap here
           child: icon),

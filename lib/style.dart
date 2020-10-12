@@ -16,3 +16,9 @@ const subtitleStyle = TextStyle(
   fontWeight: FontWeight.w300,
   color: lightColor,
 );
+
+const notChosenStyle = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w300,
+  color: bgdarkColor,
+);

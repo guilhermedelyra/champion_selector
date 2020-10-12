@@ -29,6 +29,7 @@ class ChampionsViewModel {
       for (int i = 0; i < categoryJson.length; i++) {
         champions.add(new Champions.fromJson(categoryJson[i]));
       }
+      return champions;
     } catch (e) {
       print(e);
     }
