@@ -4,18 +4,18 @@ import 'package:champion_selector/champions.dart';
 import 'style.dart';
 
 class AutoComplete extends StatefulWidget {
-  final int i;
+  final String role;
 
-  const AutoComplete({Key key, this.i}) : super(key: key);
+  const AutoComplete({Key key, this.role}) : super(key: key);
 
   @override
   _AutoCompleteState createState() => new _AutoCompleteState();
 }
 
 class _AutoCompleteState extends State<AutoComplete> {
-  GlobalKey<AutoCompleteTextFieldState<Champions>> key = new GlobalKey();
+  var key = [new GlobalKey<AutoCompleteTextFieldState<Champions>>(), new GlobalKey<AutoCompleteTextFieldState<Champions>>(), new GlobalKey<AutoCompleteTextFieldState<Champions>>()];
 
-  AutoCompleteTextField searchTextField;
+  var searchTextField = List(3);
   // bool showWhichErrorText = false;
   TextEditingController controller = new TextEditingController();
   bool hasChosen;
@@ -36,7 +36,7 @@ class _AutoCompleteState extends State<AutoComplete> {
     return new RaisedButton(
       child: new Text(
           hasChosen ? "Find best champion" : "Choose a champion first!",
-          style: subtitleStyle),
+          style: hasChosen ? chosenStyle : subtitleStyle),
       color: hasChosen ? Colors.green : Colors.blueGrey,
       onPressed: hasChosen ? _findBestChampion : null,
     );
@@ -46,29 +46,23 @@ class _AutoCompleteState extends State<AutoComplete> {
     print("yes");
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: bgColor,
-      resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        title: Text("Second Route ${widget.i}"),
-        backgroundColor: bgdarkColor,
-      ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Expanded(
+  Widget _searchBar(i, role, {team='Enemy'}) {
+    if ((role == 'Support' || role == 'ADC') && (widget.role != 'Support' && widget.role != 'ADC')) {
+      return SizedBox.shrink();
+    }
+    return Expanded(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Enemy Mid:', style: titleStyle),
+                  Container(
+                    height: 80, width: 160,
+                    child: Center(child: Text('$team $role:', style: titleStyle),)),
                   SizedBox(height: 80, width: 20),
                   Container(
                     height: 80,
                     width: 400,
-                    child: searchTextField = AutoCompleteTextField<Champions>(
+                    child: searchTextField[i] = AutoCompleteTextField<Champions>(
                       style: TextStyle(color: lightColor, fontSize: 16.0),
                       decoration: InputDecoration(
                         suffixIcon: new Icon(Icons.search),
@@ -82,12 +76,12 @@ class _AutoCompleteState extends State<AutoComplete> {
                         setState(() => {
                               hasChosen = true,
                               print(hasChosen),
-                              searchTextField.textField.controller.text =
+                              searchTextField[i].textField.controller.text =
                                   item.autocompleteterm,
                             });
                       },
                       clearOnSubmit: false,
-                      key: key,
+                      key: key[i],
                       suggestions: ChampionsViewModel.champions,
                       itemBuilder: (context, item) {
                         return Container(
@@ -124,7 +118,7 @@ class _AutoCompleteState extends State<AutoComplete> {
                             topRight: Radius.circular(8.0),
                           ),
                           child: Image.network(
-                              'http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/${searchTextField.textField.controller.text}.png',
+                              'http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/${searchTextField[i].textField.controller.text}.png',
                               width: 32,
                               height: 32,
                               fit: BoxFit.fill),
@@ -132,14 +126,30 @@ class _AutoCompleteState extends State<AutoComplete> {
                       : (new Icon(Icons.cancel)),
                 ],
               ),
-            ),
+            );
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: bgColor,
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        title: Text("Best matchup for ${widget.role}"),
+        backgroundColor: bgdarkColor,
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            _searchBar(0, widget.role),
+            _searchBar(1, widget.role == 'ADC' ? 'Support' : 'ADC'),
+            _searchBar(2, widget.role == 'Support' ? 'ADC' : 'Support', team: 'Ally'),
             _findChampionButton(),
             RaisedButton(
               color: Colors.red,
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Go back!', style: subtitleStyle),
+              child: Text('Go back!', style: chosenStyle),
             ),
           ],
         ),

@@ -69,5 +69,5 @@ fill_matchups_synergy_adcsupport()
 # with open('champions.json', 'w') as outfile:
 #     json.dump(list_of_all_champions, outfile, indent=4, sort_keys=True)
 
-with open('data.json', 'w') as outfile:
+with open('assets/data.json', 'w') as outfile:
     json.dump(champions_per_role, outfile, indent=4, sort_keys=True)

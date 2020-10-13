@@ -92,7 +92,7 @@ Widget _buildContainer(icon, title, context) {
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      Align(alignment: Alignment.center, child: box(icon, context)),
+      Align(alignment: Alignment.center, child: box(title, icon, context)),
       Align(
         alignment: Alignment.center,
         child: Text(
@@ -105,7 +105,7 @@ Widget _buildContainer(icon, title, context) {
   );
 }
 
-Widget box(icon, context) {
+Widget box(title, icon, context) {
   return Container(
     height: 100.0,
     width: 100.0,
@@ -138,7 +138,7 @@ Widget box(icon, context) {
                 print("Container pressed"),
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AutoComplete(i: 5)),
+                  MaterialPageRoute(builder: (context) => AutoComplete(role: title)),
                 ),
               }, // handle your onTap here
           child: icon),
