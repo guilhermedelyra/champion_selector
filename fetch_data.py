@@ -30,7 +30,7 @@ def get_champions_per_role():
         split_json = f'"{role}","title":"'
         champions_winrate = [{'name': t.split('","general":{')[0], 'winrate': t.split('","general":{')[-1].split(',')[0].split(':')[-1]} for t in html.split(split_json)[1:]]
         for ch in champions_winrate:
-            champions_per_role[role][ch['name']] = {'winrate': ch['winrate']}
+            champions_per_role[role][ch['name']] = {'winrate': float(ch['winrate']), 'matchups':{}, 'adcsupport':{}, 'synergy':{}}
 
 def get_and_set_champ_winrate(url, role, champ, ext='?league='):
     pairs = [
@@ -52,7 +52,9 @@ def get_and_set_champ_winrate(url, role, champ, ext='?league='):
     json_data = html.split('matchupData.championData = ')[-1].split('\n')[0]
     global champions_per_role
     for type_of_pair in pairs:
-        champions_per_role[role][champ][type_of_pair] = json.loads(json_data)[type_of_pair]
+        loaded_json = json.loads(json_data)[type_of_pair]
+        for obj in loaded_json:
+            champions_per_role[role][champ][type_of_pair][obj['key']] = obj['winRate']
 
 
 def fill_matchups_synergy_adcsupport():
@@ -60,7 +62,7 @@ def fill_matchups_synergy_adcsupport():
         for champ, winrate in champions_per_role[role].items():
             champ_name_for_url = re.sub(r'[^a-zA-Z]', '', champ).title()
             url = base_url+'champion/'+champ_name_for_url+f'/{role}'
-            get_and_set_champ_winrate(url, role, champ)            
+            get_and_set_champ_winrate(url, role, champ)
 
 get_champions_per_role()
 fill_list_of_champs()

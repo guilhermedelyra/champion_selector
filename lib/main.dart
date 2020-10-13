@@ -43,7 +43,7 @@ Widget app(BuildContext context) {
         _buildContainer(roleIcon(Colors.purpleAccent, "top"), 'Top', context),
         _buildContainer(roleIcon(Colors.green, "jungle"), 'Jungle', context),
       )),
-      _buildContainer(roleIcon(Colors.redAccent, "mid"), 'Mid', context),
+      _buildContainer(roleIcon(Colors.redAccent, "mid"), 'Middle', context),
       Expanded(
           child: renderColumn(
         _buildContainer(roleIcon(Colors.cyanAccent, "adc"), 'ADC', context),
@@ -138,7 +138,8 @@ Widget box(title, icon, context) {
                 print("Container pressed"),
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AutoComplete(role: title)),
+                  MaterialPageRoute(
+                      builder: (context) => AutoComplete(role: title)),
                 ),
               }, // handle your onTap here
           child: icon),
