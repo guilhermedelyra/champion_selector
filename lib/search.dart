@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:champion_selector/champions_names.dart';
@@ -20,18 +22,18 @@ class _AutoCompleteState extends State<AutoComplete> {
     new GlobalKey<AutoCompleteTextFieldState<ChampionsNames>>()
   ];
 
-  static const MATCHUP = 0;
+  static const MATCHUPS = 0;
   static const ADCSUPPORT = 1;
   static const SYNERGY = 2;
 
   var searchTextField = List(3);
   TextEditingController controller = new TextEditingController();
   var chosenChampion = ['', '', ''];
-  var howManyChosen = 1;
+  var howManyChosen = 0;
   var chosenAny = false;
   Map championsData;
-
-  var possibleChampions = new Map<String, double>();
+  var possibleChampions = new Map<String, List>();
+  LinkedHashMap result;
   _AutoCompleteState();
 
   void _loadData() async {
@@ -39,8 +41,11 @@ class _AutoCompleteState extends State<AutoComplete> {
     championsData = await ChampionsViewModel.loadChampions();
 
     championsData[widget.role].keys.forEach((k) => {
-          possibleChampions[k] = championsData[widget.role][k]['winrate'],
+          possibleChampions[k] = new List<double>.filled(2, 0),
+          possibleChampions[k][1] = championsData[widget.role][k]['winrate'],
         });
+
+    print(championsData[widget.role].keys);
   }
 
   @override
@@ -60,35 +65,50 @@ class _AutoCompleteState extends State<AutoComplete> {
   }
 
   void _findBestSynergy() {
-    championsData[widget.role][chosenChampion[SYNERGY]]['synergy']
-        .forEach((champ, winrate) => {
-              possibleChampions[champ] += winrate,
-            });
+    championsData[widget.role].forEach((champName, obj) => {
+          possibleChampions[champName][0] += obj['synergy']
+                  [chosenChampion[SYNERGY]] ??
+              possibleChampions[champName][1],
+        });
   }
 
   void _findBestADCSupport() {
-    //same as matchup
-    championsData[widget.role][chosenChampion[ADCSUPPORT]]['adcsupport']
-        .forEach((champ, winrate) => {
-              possibleChampions[champ] += 1 - winrate,
-            });
+    championsData[widget.role].forEach((champName, obj) => {
+          possibleChampions[champName][0] += obj['adcsupport']
+                  [chosenChampion[ADCSUPPORT]] ??
+              possibleChampions[champName][1],
+        });
   }
 
   void _findBestMatchup() {
-    championsData[widget.role][chosenChampion[MATCHUP]]['matchups']
+    // print(chosenChampion[MATCHUPS]);
+    // print(championsData[widget.role][chosenChampion[MATCHUPS]]);
+    championsData[widget.role][chosenChampion[MATCHUPS]]['matchups']
         .forEach((champ, winrate) => {
-              possibleChampions[champ] += 1 - winrate,
+              print(champ),
+              print('///'),
+              print(possibleChampions.keys),
+              possibleChampions[champ][0] = 1 - winrate,
             });
   }
 
   void _findBestChampion() {
-    _findBestMatchup();
-    _findBestADCSupport();
-    _findBestSynergy();
+    if (chosenChampion[MATCHUPS] != '') _findBestMatchup();
+    if (chosenChampion[ADCSUPPORT] != '') _findBestADCSupport();
+    if (chosenChampion[SYNERGY] != '') _findBestSynergy();
 
     for (var keys in possibleChampions.keys) {
-      possibleChampions[keys] /= howManyChosen;
+      possibleChampions[keys][0] /= howManyChosen;
     }
+
+    var sortedKeys = possibleChampions.keys.toList(growable: false)
+      ..sort((k2, k1) =>
+          possibleChampions[k1][0].compareTo(possibleChampions[k2][0]));
+
+    result = new LinkedHashMap.fromIterable(sortedKeys,
+        key: (k) => k, value: (k) => possibleChampions[k][0]);
+
+    print(result);
   }
 
   Widget _searchBar(i, role, {team = 'Enemy'}) {
@@ -124,9 +144,10 @@ class _AutoCompleteState extends State<AutoComplete> {
                 setState(() => {
                       chosenAny = true,
                       howManyChosen += 1,
-                      chosenChampion[i] = item.autocompleteterm,
+                      chosenChampion[i] = item.keyword,
+                      print(item.keyword),
                       searchTextField[i].textField.controller.text =
-                          item.autocompleteterm,
+                          item.keyword,
                     });
               },
               clearOnSubmit: false,
@@ -190,7 +211,7 @@ class _AutoCompleteState extends State<AutoComplete> {
       body: Center(
         child: Column(
           children: <Widget>[
-            _searchBar(MATCHUP, widget.role), // matchup
+            _searchBar(MATCHUPS, widget.role), // matchup
             _searchBar(ADCSUPPORT,
                 widget.role == 'ADC' ? 'Support' : 'ADC'), // adcsupport
             _searchBar(SYNERGY, widget.role == 'Support' ? 'ADC' : 'Support',

@@ -10,27 +10,31 @@ headers = {'User-Agent': 'Mozilla/5.0'}
 
 roles = ['Support', 'ADC', 'Top', 'Middle', 'Jungle']
 champions_per_role = dict((role, dict({})) for role in roles)
-list_of_all_champions = []
+champ_name_to_keyword = {}
+suggestions_file = {}
 
 def fill_list_of_champs():
-    global list_of_all_champions
-    global champions_per_role
-    for role in champions_per_role.keys():
-        list_of_all_champions += champions_per_role[role].keys()
-    
-    list_of_all_champions = sorted(set(list_of_all_champions))
-
-
-def get_champions_per_role():
-    url = base_url+'statistics/'
+    url = base_url+'statistics/'    
     req = requests.get(url, headers=headers)
     html = req.text
 
+    for token in html.split('name":"')[1:]:
+        name = token.split('","id"')[0].split('","image":')[0]
+        key = html.split(f'"name":"{name}","image":"')[-1].split('.png')[0]
+
+        champ_name_to_keyword[name] = key
+
+    # print(champ_name_to_keyword.keys())
+    suggestions_file = { "champions" : [{'keyword': v, 'autocompleteTerm': k} for k,v in champ_name_to_keyword.items()] }
+
+    get_champions_per_role(html)
+
+def get_champions_per_role(html):
     for role in roles:
         split_json = f'"{role}","title":"'
         champions_winrate = [{'name': t.split('","general":{')[0], 'winrate': t.split('","general":{')[-1].split(',')[0].split(':')[-1]} for t in html.split(split_json)[1:]]
         for ch in champions_winrate:
-            champions_per_role[role][ch['name']] = {'winrate': float(ch['winrate']), 'matchups':{}, 'adcsupport':{}, 'synergy':{}}
+            champions_per_role[role][champ_name_to_keyword[ch['name']]] = {'winrate': float(ch['winrate']), 'matchups':{}, 'adcsupport':{}, 'synergy':{}}
 
 def get_and_set_champ_winrate(url, role, champ, ext='?league='):
     pairs = [
@@ -60,16 +64,14 @@ def get_and_set_champ_winrate(url, role, champ, ext='?league='):
 def fill_matchups_synergy_adcsupport():
     for role in champions_per_role.keys():
         for champ, winrate in champions_per_role[role].items():
-            champ_name_for_url = re.sub(r'[^a-zA-Z]', '', champ).title()
-            url = base_url+'champion/'+champ_name_for_url+f'/{role}'
+            url = base_url+'champion/'+champ+f'/{role}'
             get_and_set_champ_winrate(url, role, champ)
 
-get_champions_per_role()
 fill_list_of_champs()
 fill_matchups_synergy_adcsupport()
 
-# with open('champions.json', 'w') as outfile:
-#     json.dump(list_of_all_champions, outfile, indent=4, sort_keys=True)
+with open('champions.json', 'w') as outfile:
+    json.dump(suggestions_file, outfile, indent=4, sort_keys=True)
 
-with open('assets/data.json', 'w') as outfile:
+with open('data.json', 'w') as outfile:
     json.dump(champions_per_role, outfile, indent=4, sort_keys=True)
