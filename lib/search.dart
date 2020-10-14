@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:champion_selector/champions_names.dart';
 import 'package:champion_selector/champions.dart';
+import 'package:champion_selector/best_champion_result.dart';
+
 import 'style.dart';
 
 class AutoComplete extends StatefulWidget {
@@ -33,9 +35,11 @@ class _AutoCompleteState extends State<AutoComplete> {
   var chosenAny = false;
   Map championsData;
   var possibleChampions = new Map<String, List>();
-  LinkedHashMap result;
+  LinkedHashMap resultSortedByValue;
+  List resultAsList = List();
+  var searched = false;
   _AutoCompleteState();
-
+  var contexttt;
   void _loadData() async {
     await ChampionsNamesViewModel.loadChampionsNames();
     championsData = await ChampionsViewModel.loadChampions();
@@ -81,13 +85,8 @@ class _AutoCompleteState extends State<AutoComplete> {
   }
 
   void _findBestMatchup() {
-    // print(chosenChampion[MATCHUPS]);
-    // print(championsData[widget.role][chosenChampion[MATCHUPS]]);
     championsData[widget.role][chosenChampion[MATCHUPS]]['matchups']
         .forEach((champ, winrate) => {
-              print(champ),
-              print('///'),
-              print(possibleChampions.keys),
               possibleChampions[champ][0] = 1 - winrate,
             });
   }
@@ -105,10 +104,36 @@ class _AutoCompleteState extends State<AutoComplete> {
       ..sort((k2, k1) =>
           possibleChampions[k1][0].compareTo(possibleChampions[k2][0]));
 
-    result = new LinkedHashMap.fromIterable(sortedKeys,
+    resultSortedByValue = new LinkedHashMap.fromIterable(sortedKeys,
         key: (k) => k, value: (k) => possibleChampions[k][0]);
 
-    print(result);
+    resultAsList.clear();
+    resultSortedByValue.forEach((key, value) {
+      resultAsList.add([key, value]);
+    });
+
+    var title = 'Best ${widget.role} ';
+    if (chosenChampion[MATCHUPS] != '')
+      title += 'against ${chosenChampion[MATCHUPS]}';
+    if (chosenChampion[ADCSUPPORT] != '') {
+      title += chosenChampion[MATCHUPS] != '' ? ' and ' : 'against ';
+      title += "${chosenChampion[ADCSUPPORT]}";
+    }
+    if (chosenChampion[SYNERGY] != '') {
+      title +=
+          (chosenChampion[MATCHUPS] != '' || chosenChampion[ADCSUPPORT] != '')
+              ? ' '
+              : '';
+      title += "that synergyses with ${chosenChampion[SYNERGY]}";
+    }
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (contexttt) =>
+                BestChampion(orderedChampions: resultAsList, title: title)));
+
+    print('ue');
   }
 
   Widget _searchBar(i, role, {team = 'Enemy'}) {
@@ -201,6 +226,7 @@ class _AutoCompleteState extends State<AutoComplete> {
 
   @override
   Widget build(BuildContext context) {
+    contexttt = context;
     return Scaffold(
       backgroundColor: bgColor,
       resizeToAvoidBottomPadding: false,
