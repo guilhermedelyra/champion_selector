@@ -62,7 +62,7 @@ class _BestChampionState extends State<BestChampion> {
             RaisedButton(
               color: Colors.red,
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/');
               },
               child: Text('Go back!', style: chosenStyle),
             ),

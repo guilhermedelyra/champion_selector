@@ -1,6 +1,6 @@
 import 'dart:convert';
-
-import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 class ChampionsNames {
   String keyword;
@@ -23,7 +23,9 @@ class ChampionsNamesViewModel {
   static Future loadChampionsNames() async {
     try {
       champions = new List<ChampionsNames>();
-      String jsonString = await rootBundle.loadString('assets/champions.json');
+      final path = await getApplicationDocumentsDirectory();
+      final file = File('${path.path}/champions.json');
+      String jsonString = await file.readAsString();
       Map parsedJson = json.decode(jsonString);
       var categoryJson = parsedJson['champions'] as List;
       for (int i = 0; i < categoryJson.length; i++) {

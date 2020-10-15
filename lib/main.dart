@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:champion_selector/search.dart';
+import 'package:champion_selector/loading.dart';
 import 'style.dart';
 
 void main() {
@@ -29,9 +30,39 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
+  initState() {
+    // _initStarCore();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: bgColor, body: Center(child: app(context)));
+      backgroundColor: bgColor,
+      body: Center(
+        child: Stack(
+          children: <Widget>[
+            Positioned(
+              top: 0.0,
+              right: 0.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new IconButton(
+                    icon: Icon(
+                      Icons.refresh,
+                      color: Colors.lightBlueAccent,
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Loading()));
+                    }),
+              ),
+            ),
+            app(context),
+          ],
+        ),
+      ),
+    );
   }
 }
 

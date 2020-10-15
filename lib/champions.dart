@@ -1,11 +1,13 @@
 import 'dart:convert';
-
-import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 class ChampionsViewModel {
   static Future loadChampions() async {
     try {
-      String jsonString = await rootBundle.loadString('assets/data.json');
+      final path = await getApplicationDocumentsDirectory();
+      final file = File('${path.path}/data.json');
+      String jsonString = await file.readAsString();
       Map parsedJson = json.decode(jsonString);
       return parsedJson;
     } catch (e) {
