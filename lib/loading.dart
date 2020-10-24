@@ -1,53 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:process_run/shell.dart';
 import 'style.dart';
-import 'package:process_run/cmd_run.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'dart:convert';
-
-Future<String> get _localPath async {
-  final directory = await getApplicationDocumentsDirectory();
-  return directory.path;
-}
-
-Future<File> _localFile(String filename) async {
-  final path = await _localPath;
-  return File('$path/$filename.json');
-}
-
-Future<File> writeData(data, filename) async {
-  final file = await _localFile(filename);
-  return file.writeAsString(json.encode(data));
-}
-
-Future __updateFile(file) async {
-  var parsedJson;
-  await Process.run("python/python.exe", ["fetch_scripts/fetch_$file.py"])
-      .then((process) async => {
-            print(process.stdout),
-            parsedJson = await json.decode(process.stdout),
-          });
-  await writeData(parsedJson, file);
-}
-
-Future updateFiles() async {
-  // await __updateFile('champions');
-  await __updateFile('data');
-
-  // await writeCounter(5);
-  // var shell = Shell();
-  // final runInShell = Platform.isWindows;
-
-  // await runCmd(cmd, verbose: true);
-  // shell = shell.pushd('flutter_assets');
-  // shell = shell.pushd('python');
-  // await shell.run('''
-  // cmd.exe ${shellArgument('/C python.exe fetch_data.py')}
-  // ''');
-}
+import 'user_preferences.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -55,16 +13,21 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  int filesConcluded = 0;
   void _updateFiles() async {
-    await new Future.delayed(const Duration(seconds: 5), () {});
-    // await updateFiles();
-    Navigator.pop(context);
+    await new Future.delayed(const Duration(seconds: 2), () {});
+    setState(() => filesConcluded += 1);
+    await new Future.delayed(const Duration(seconds: 2), () {});
+    setState(() => filesConcluded += 1);
+    await new Future.delayed(const Duration(seconds: 2), () {});
+    SharedPreferencesClass.save("uashuash", true);
+    Navigator.pushNamed(context, '/home');
   }
 
   @override
   void initState() {
     super.initState();
-    _updateFiles();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _updateFiles());
   }
 
   @override
@@ -94,6 +57,7 @@ class _LoadingState extends State<Loading> {
                 ),
               ),
             ),
+            Text('$filesConcluded/2...', style: titleStyle),
             RaisedButton(
               color: Colors.red,
               onPressed: () {
@@ -106,5 +70,39 @@ class _LoadingState extends State<Loading> {
         ),
       ),
     );
+  }
+
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+    return directory.path;
+  }
+
+  Future<File> _localFile(String filename) async {
+    final path = await _localPath;
+    return File('$path/$filename.json');
+  }
+
+  Future<File> writeData(data, filename) async {
+    final file = await _localFile(filename);
+    return file.writeAsString(json.encode(data));
+  }
+
+  Future<int> __updateFile(file) async {
+    var parsedJson;
+    await Process.run("python/python.exe", ["fetch_scripts/fetch_$file.py"])
+        .then((process) async => {
+              print(process.stdout),
+              parsedJson = await json.decode(process.stdout),
+            });
+    await writeData(parsedJson, file);
+    return 1;
+  }
+
+  Future updateFiles() async {
+    var files = 0;
+    files += await __updateFile('champions');
+    setState(() => filesConcluded = files);
+    files += await __updateFile('data');
+    setState(() => filesConcluded = files);
   }
 }
