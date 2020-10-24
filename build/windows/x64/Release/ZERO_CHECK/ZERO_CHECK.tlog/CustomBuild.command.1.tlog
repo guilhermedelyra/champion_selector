@@ -1,0 +1,10 @@
+^C:\USERS\GUILY\CHAMPION_SELECTOR\BUILD\WINDOWS\CMAKEFILES\154F2BF8947E884E08A9A78B7A9B7B20\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/guily/champion_selector/windows -BC:/Users/guily/champion_selector/build/windows --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/guily/champion_selector/build/windows/champion_selector.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -10,7 +10,8 @@ void main() async {
     '/home': (BuildContext context) => Home(),
   };
   WidgetsFlutterBinding.ensureInitialized();
-  await SharedPreferencesClass.restore("uashuash").then((value) {
+  await SharedPreferencesClass.restore("hasInstalledFilesFirstTime")
+      .then((value) {
     if (value) {
       mapp = MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -33,6 +34,5 @@ void main() async {
       );
     }
   });
-  print("Done.");
   runApp(mapp);
 }

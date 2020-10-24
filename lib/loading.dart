@@ -15,12 +15,8 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
   int filesConcluded = 0;
   void _updateFiles() async {
-    await new Future.delayed(const Duration(seconds: 2), () {});
-    setState(() => filesConcluded += 1);
-    await new Future.delayed(const Duration(seconds: 2), () {});
-    setState(() => filesConcluded += 1);
-    await new Future.delayed(const Duration(seconds: 2), () {});
-    SharedPreferencesClass.save("uashuash", true);
+    await updateFiles();
+    SharedPreferencesClass.save("hasInstalledFilesFirstTime", true);
     Navigator.pushNamed(context, '/home');
   }
 

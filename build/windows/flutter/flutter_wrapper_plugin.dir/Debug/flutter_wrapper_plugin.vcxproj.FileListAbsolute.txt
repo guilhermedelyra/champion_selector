@@ -1,0 +1,2 @@
+C:\Users\guily\champion_selector\build\windows\flutter\Debug\flutter_wrapper_plugin.pdb
+C:\Users\guily\champion_selector\build\windows\flutter\flutter_wrapper_plugin.dir\Debug\flutter_wrapper_plugin.pdb

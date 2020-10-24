@@ -146,7 +146,6 @@ Widget box(title, icon, context) {
           splashColor: bgdarkColor,
           highlightColor: Colors.transparent,
           onTap: () => {
-                print("Container pressed"),
                 Navigator.push(
                   context,
                   MaterialPageRoute(

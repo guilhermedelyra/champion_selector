@@ -47,9 +47,6 @@ class _AutoCompleteState extends State<AutoComplete> {
           possibleChampions[k] = new List<double>.filled(2, 0),
           possibleChampions[k][1] = championsData[widget.role][k]['winrate'],
         });
-
-    print(ChampionsNamesViewModel.filteredSearch);
-    print(championsData[widget.role].keys);
   }
 
   @override
@@ -132,8 +129,6 @@ class _AutoCompleteState extends State<AutoComplete> {
         MaterialPageRoute(
             builder: (context) =>
                 BestChampion(orderedChampions: resultAsList, title: title)));
-
-    print('ue');
   }
 
   Widget _searchBar(i, role, {team = 'Enemy'}) {
@@ -170,7 +165,6 @@ class _AutoCompleteState extends State<AutoComplete> {
                       chosenAny = true,
                       howManyChosen += 1,
                       chosenChampion[i] = item.keyword,
-                      print(item.keyword),
                       searchTextField[i].textField.controller.text =
                           item.keyword,
                     });
@@ -179,7 +173,6 @@ class _AutoCompleteState extends State<AutoComplete> {
               key: key[i],
               suggestions: ChampionsNamesViewModel.filteredSearch['$role'],
               itemBuilder: (context, item) {
-                print(item);
                 return Container(
                   color: bglightColor,
                   child: Row(
