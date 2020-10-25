@@ -1,7 +1,9 @@
 # Champion Selector
-App pra identificar o melhor matchup em qualquer role (utilizando como fonte o [champion.gg](https://champion.gg).
+App pra identificar o melhor matchup em qualquer role (utilizando como fonte o [champion.gg](https://champion.gg)).
 
 Para baixar, [clique aqui](https://github.com/guilhermedelyra/champion_selector/raw/main/ChampionSelector.zip)
+
+Obs: talvez (!!!) tenha que rodar como administrador.
 
 ## Diferencial (?)
 
