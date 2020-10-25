@@ -1,16 +1,20 @@
-# champion_selector
+# Champion Selector
+App pra identificar o melhor matchup em qualquer role (utilizando como fonte o [champion.gg](https://champion.gg).
 
-A new Flutter project.
+O diferencial é, no caso da Botlane, poder utilizar as 3 outras variaveis.
 
-## Getting Started
+```
+Exemplo:
 
-This project is a starting point for a Flutter application.
+Você é support, botlane inimiga é Draven + Leona, teu adc é um Jhin; o que pickar?
+```
+![image](https://user-images.githubusercontent.com/23236957/97100196-9ca25f80-166f-11eb-8c55-97f6b970bd33.png)
+![image](https://user-images.githubusercontent.com/23236957/97100202-a88e2180-166f-11eb-8150-db61683b2030.png)
 
-A few resources to get you started if this is your first Flutter project:
+### Observações
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Na primeira vez que rodar o app, abrirá uma tela de "loading"; isso significa que os arquivos estão sendo baixados*, o que pode levar até 10min dependendo da conexão etc
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+\* Os arquivos ficam salvos na pasta "Meus Documentos":
+![image](https://user-images.githubusercontent.com/23236957/97100224-facf4280-166f-11eb-9a8d-b1e0dad8c273.png)
+
