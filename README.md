@@ -1,6 +1,10 @@
 # Champion Selector
 App pra identificar o melhor matchup em qualquer role (utilizando como fonte o [champion.gg](https://champion.gg).
 
+Para baixar, [clique aqui](https://github.com/guilhermedelyra/champion_selector/raw/main/ChampionSelector.zip)
+
+## Diferencial (?)
+
 O diferencial é, no caso da Botlane, poder utilizar as 3 outras variaveis.
 
 ```
