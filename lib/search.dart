@@ -38,18 +38,15 @@ class _AutoCompleteState extends State<AutoComplete> {
   LinkedHashMap resultSortedByValue;
   List resultAsList = List();
   var searched = false;
+
   _AutoCompleteState();
-  var contexttt;
   void _loadData() async {
     await ChampionsNamesViewModel.loadChampionsNames();
     championsData = await ChampionsViewModel.loadChampions();
-
     championsData[widget.role].keys.forEach((k) => {
           possibleChampions[k] = new List<double>.filled(2, 0),
           possibleChampions[k][1] = championsData[widget.role][k]['winrate'],
         });
-
-    print(championsData[widget.role].keys);
   }
 
   @override
@@ -130,10 +127,8 @@ class _AutoCompleteState extends State<AutoComplete> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (contexttt) =>
+            builder: (context) =>
                 BestChampion(orderedChampions: resultAsList, title: title)));
-
-    print('ue');
   }
 
   Widget _searchBar(i, role, {team = 'Enemy'}) {
@@ -170,14 +165,13 @@ class _AutoCompleteState extends State<AutoComplete> {
                       chosenAny = true,
                       howManyChosen += 1,
                       chosenChampion[i] = item.keyword,
-                      print(item.keyword),
                       searchTextField[i].textField.controller.text =
                           item.keyword,
                     });
               },
               clearOnSubmit: false,
               key: key[i],
-              suggestions: ChampionsNamesViewModel.champions,
+              suggestions: ChampionsNamesViewModel.filteredSearch['$role'],
               itemBuilder: (context, item) {
                 return Container(
                   color: bglightColor,
@@ -226,7 +220,6 @@ class _AutoCompleteState extends State<AutoComplete> {
 
   @override
   Widget build(BuildContext context) {
-    contexttt = context;
     return Scaffold(
       backgroundColor: bgColor,
       resizeToAvoidBottomPadding: false,
