@@ -16,7 +16,7 @@ class _LoadingState extends State<Loading> {
   int filesConcluded = 0;
   void _updateFiles() async {
     await updateFiles();
-    SharedPreferencesClass.save("hasInstalledFilesFirstTime", true);
+    SharedPreferencesClass.save("hasInstalledFilesForTheFirstTime", true);
     Navigator.pushNamed(context, '/home');
   }
 

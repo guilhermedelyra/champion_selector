@@ -5,6 +5,8 @@ Para baixar, [clique aqui](https://github.com/guilhermedelyra/champion_selector/
 
 Obs: talvez (!!!) tenha que rodar como administrador.
 
+Obs2: se der erro de "vcruntime_1.dll" só [baixar](https://www.dll-files.com/vcruntime140_1.dll.html)
+
 ## Diferencial (?)
 
 O diferencial é, no caso da Botlane, poder utilizar as 3 outras variaveis.

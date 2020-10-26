@@ -10,7 +10,7 @@ void main() async {
     '/home': (BuildContext context) => Home(),
   };
   WidgetsFlutterBinding.ensureInitialized();
-  await SharedPreferencesClass.restore("hasInstalledFilesFirstTime")
+  await SharedPreferencesClass.restore("hasInstalledFilesForTheFirstTime")
       .then((value) {
     if (value) {
       mapp = MaterialApp(
